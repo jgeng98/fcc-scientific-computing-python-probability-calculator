@@ -9,6 +9,12 @@ class Hat:
         self.contents = []
         for key, value in kwargs.items():
             self.contents.extend([key] * value)
+        random.shuffle(self.contents)
+
+    def draw(self, num):
+        drawn = self.contents[-num:]
+        self.contents = self.contents[:-num]
+        return drawn
 
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
